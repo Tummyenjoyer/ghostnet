@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <title>Ghost Net Fishing</title>
+</head>
+<body>
+<div class="home-container">
+
+    <h1>🌊 Ghost Net Fishing</h1>
+    <p style="color: #666; margin-bottom: 20px;">Melde und verwalte herrenlose Fischernetze</p>
+
+    <form action="/login" method="post">
+        <label>Dein Name:</label>
+        <input type="text" name="name" required placeholder="Vor- und Nachname"/><br/><br/>
+
+        <label>Deine Rolle:</label>
+        <select name="role" style="width: 100%; padding: 10px; margin-bottom: 20px;">
+            <option value="MELDEND">Meldende Person</option>
+            <option value="BERGEND">Bergende Person</option>
+        </select><br/>
+
+        <button type="submit" style="width: 100%; padding: 15px; font-size: 16px;">
+            Einloggen
+        </button>
+    </form>
+
+    <hr style="margin: 20px 0; border: 1px solid #ddd;"/>
+
+    <a href="/verschollen">
+        <button style="width: 100%; padding: 15px; font-size: 16px; background-color: #666;">
+            Netz als verschollen melden
+        </button>
+    </a>
+
+    <br/><br/>
+
+    <a href="/uebersicht">
+        <button style="width: 100%; padding: 15px; font-size: 16px; background-color: #2c8fb5;">
+            🗂 GhostNet Übersicht
+        </button>
+    </a>
+
+</div>
+</body>
+</html>

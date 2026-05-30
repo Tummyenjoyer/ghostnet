@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <title>Netz melden</title>
+</head>
+<body>
+
+<div th:replace="~{navbar :: navbar}"></div>
+
+<div class="container">
+
+    <h1>Geisternetz melden</h1>
+
+    <form action="/melden/submit" method="post">
+        <label>Standort (GPS):</label>
+        <input type="text" name="location" required placeholder="z.B. 52.123, 13.456"/><br/><br/>
+
+        <label>Größe:</label>
+        <select name="size">
+            <option value="Klein">Klein</option>
+            <option value="Mittel">Mittel</option>
+            <option value="Groß">Groß</option>
+        </select><br/><br/>
+
+        <label>
+            <input type="checkbox" name="anonymous" value="true" id="anonCheck"
+                   onclick="toggleName()"/> Anonym melden
+        </label><br/><br/>
+
+        <div id="nameDiv">
+            <label>Telefon:</label>
+            <input type="text" name="reporterPhone"/><br/><br/>
+        </div>
+
+        <button type="submit">Netz melden</button>
+    </form>
+
+</div>
+
+<script>
+    function toggleName() {
+        var anonCheck = document.getElementById('anonCheck');
+        var nameDiv = document.getElementById('nameDiv');
+        if (anonCheck.checked) {
+            nameDiv.style.display = 'none';
+        } else {
+            nameDiv.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>

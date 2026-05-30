@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <title>Netz als verschollen melden</title>
+</head>
+<body>
+
+<div th:replace="~{navbar :: navbar}" th:if="${userName != null}"></div>
+
+<div class="container">
+
+    <h1>Netz als verschollen melden</h1>
+
+    <form action="/verschollen/submit" method="post">
+
+        <label>Dein Name (Pflicht):</label>
+        <input type="text" name="reporterName"
+               th:value="${userName}"
+               required/><br/><br/>
+
+        <label>Telefon (Pflicht):</label>
+        <input type="text" name="reporterPhone" required
+               placeholder="z.B. 0123456789"/><br/><br/>
+
+        <label>Geisternetz auswählen:</label>
+        <select name="netId">
+            <option th:each="net : ${nets}"
+                    th:value="${net.id}"
+                    th:text="${net.location}"></option>
+        </select><br/><br/>
+
+        <button type="submit">Als verschollen melden</button>
+    </form>
+
+    <br/>
+    <a href="/">Zurück zur Startseite</a>
+
+</div>
+</body>
+</html>

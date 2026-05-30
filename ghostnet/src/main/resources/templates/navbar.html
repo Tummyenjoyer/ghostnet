@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div th:fragment="navbar" class="navbar">
+    <div class="navbar-brand">🌊 Ghost Net Fishing</div>
+    <div class="navbar-links">
+        <span th:if="${userRole == 'MELDEND'}">
+            <a href="/melden">Netz melden</a>
+        </span>
+        <span th:if="${userRole == 'BERGEND'}">
+            <a href="/bergung">Bergung</a>
+        </span>
+        <span th:if="${userRole == 'BELIEBIG'}">
+            <a href="/verschollen">Verschollen melden</a>
+        </span>
+        <a href="/uebersicht">Übersicht</a>
+        <span th:text="'👤 ' + ${userName}"></span>
+        <a href="/logout">Ausloggen</a>
+    </div>
+</div>
+</body>
+</html>

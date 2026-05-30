@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <title>Bergung</title>
+</head>
+<body>
+
+<div th:replace="~{navbar :: navbar}"></div>
+
+<div class="container">
+
+    <h1>Bergende Person</h1>
+
+    <!-- Als bergende Person eintragen -->
+    <h2>Als bergende Person eintragen</h2>
+    <form action="/bergung/person/add" method="post">
+        <p>Einloggen als: <strong th:text="${userName}"></strong></p>
+
+        <label>Telefon:</label>
+        <input type="text" name="phone" id="phoneInput" placeholder="z.B. 0123456789"/><br/><br/>
+
+        <label>
+            <input type="checkbox" id="noPhone" onclick="togglePhone()"/>
+            Telefonnummer nicht angeben
+        </label><br/><br/>
+
+        <button type="submit">Als bergende Person registrieren</button>
+    </form>
+
+    <!-- Noch zu bergende Netze -->
+    <h2>Noch zu bergende Geisternetze</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Standort</th>
+            <th>Größe</th>
+            <th>Status</th>
+            <th>Zugewiesene Person</th>
+            <th>Aktionen</th>
+        </tr>
+        <tr th:each="net : ${nets}">
+            <td th:text="${net.id}"></td>
+            <td th:text="${net.location}"></td>
+            <td th:text="${net.size}"></td>
+            <td th:text="${net.status}"></td>
+            <td th:text="${net.assignedPerson != null ? net.assignedPerson.name : 'Niemand'}"></td>
+            <td>
+                <div th:if="${net.assignedPerson == null}">
+                    <form action="/bergung/assign" method="post">
+                        <input type="hidden" name="netId" th:value="${net.id}"/>
+                        <select name="personId">
+                            <option th:each="person : ${bergendePersons}"
+                                    th:value="${person.id}"
+                                    th:text="${person.name}"></option>
+                        </select>
+                        <button type="submit">Bergung übernehmen</button>
+                    </form>
+                </div>
+                <div th:if="${net.assignedPerson != null}">
+                    <span th:text="${net.assignedPerson.name + ' ist zuständig'}"></span>
+                </div>
+                <form action="/bergung/recover" method="post">
+                    <input type="hidden" name="netId" th:value="${net.id}"/>
+                    <button type="submit">Geborgen</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<script>
+    function togglePhone() {
+        var checkbox = document.getElementById('noPhone');
+        var phoneInput = document.getElementById('phoneInput');
+        if (checkbox.checked) {
+            phoneInput.value = 'Anonym';
+            phoneInput.disabled = true;
+        } else {
+            phoneInput.value = '';
+            phoneInput.disabled = false;
+        }
+    }
+</script>
+
+</body>
+</html>
