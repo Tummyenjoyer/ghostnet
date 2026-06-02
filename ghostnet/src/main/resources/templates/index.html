@@ -13,7 +13,11 @@
 
     <form action="/login" method="post">
         <label>Dein Name:</label>
-        <input type="text" name="name" required placeholder="Vor- und Nachname"/><br/><br/>
+        <input type="text" name="name" required
+               placeholder="Vor- und Nachname"
+               pattern="^[a-zA-ZäöüÄÖÜß]+ [a-zA-ZäöüÄÖÜß]+$"
+               title="Bitte Vor- und Nachname eingeben (nur Buchstaben, z.B. Max Mustermann)"/><br/>
+        <small style="color: #888;">Bitte Vor- und Nachname eingeben</small><br/><br/>
 
         <label>Deine Rolle:</label>
         <select name="role" style="width: 100%; padding: 10px; margin-bottom: 20px;">

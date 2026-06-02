@@ -18,11 +18,17 @@
         <label>Dein Name (Pflicht):</label>
         <input type="text" name="reporterName"
                th:value="${userName}"
-               required/><br/><br/>
+               required
+               pattern="^[a-zA-ZäöüÄÖÜß]+ [a-zA-ZäöüÄÖÜß]+$"
+               title="Bitte Vor- und Nachname eingeben (z.B. Max Mustermann)"/><br/>
+        <small style="color: #888;">Bitte Vor- und Nachname eingeben</small><br/><br/>
 
         <label>Telefon (Pflicht):</label>
         <input type="text" name="reporterPhone" required
-               placeholder="z.B. 0123456789"/><br/><br/>
+               placeholder="z.B. 0123456789"
+               pattern="^[0-9\s\+\-]{6,20}$"
+               title="Bitte gültige Telefonnummer eingeben (z.B. 0123456789)"/><br/>
+        <small style="color: #888;">Nur Zahlen erlaubt (z.B. 0123456789)</small><br/><br/>
 
         <label>Geisternetz auswählen:</label>
         <select name="netId">

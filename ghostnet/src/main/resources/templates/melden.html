@@ -15,7 +15,11 @@
 
     <form action="/melden/submit" method="post">
         <label>Standort (GPS):</label>
-        <input type="text" name="location" required placeholder="z.B. 52.123, 13.456"/><br/><br/>
+        <input type="text" name="location" required
+               placeholder="z.B. 52.123, 13.456"
+               pattern="^-?\d+\.\d+,\s*-?\d+\.\d+$"
+               title="Bitte GPS-Format verwenden: z.B. 52.123, 13.456"/><br/>
+        <small style="color: #888;">Format: Breitengrad, Längengrad (z.B. 52.123, 13.456)</small><br/><br/>
 
         <label>Größe:</label>
         <select name="size">
@@ -31,7 +35,10 @@
 
         <div id="nameDiv">
             <label>Telefon:</label>
-            <input type="text" name="reporterPhone"/><br/><br/>
+            <input type="text" name="reporterPhone"
+                   pattern="^[0-9\s\+\-]{6,20}$"
+                   title="Bitte gültige Telefonnummer eingeben (z.B. 0123456789)"/><br/>
+            <small style="color: #888;">Nur Zahlen erlaubt (z.B. 0123456789)</small><br/><br/>
         </div>
 
         <button type="submit">Netz melden</button>

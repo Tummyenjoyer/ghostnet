@@ -19,7 +19,11 @@
         <p>Einloggen als: <strong th:text="${userName}"></strong></p>
 
         <label>Telefon:</label>
-        <input type="text" name="phone" id="phoneInput" placeholder="z.B. 0123456789"/><br/><br/>
+        <input type="text" name="phone" id="phoneInput"
+               placeholder="z.B. 0123456789"
+               pattern="^[0-9\s\+\-]{6,20}$"
+               title="Bitte gültige Telefonnummer eingeben (z.B. 0123456789)"/><br/>
+        <small style="color: #888;">Nur Zahlen erlaubt (z.B. 0123456789)</small><br/><br/>
 
         <label>
             <input type="checkbox" id="noPhone" onclick="togglePhone()"/>
