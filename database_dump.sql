@@ -45,7 +45,7 @@ CREATE TABLE `ghost_net` (
 
 LOCK TABLES `ghost_net` WRITE;
 /*!40000 ALTER TABLE `ghost_net` DISABLE KEYS */;
-INSERT INTO `ghost_net` VALUES (1,'10.100, 20,100','Klein','BERGUNG_BEVORSTEHEND',17,_binary '','Karin Kenner','Anonym',NULL,NULL),(2,'20.200, 30,300','Mittel','BERGUNG_BEVORSTEHEND',18,_binary '\0','Karin Kenner','0122127127',NULL,NULL),(3,'11.111, 22.222','Groß','GEBORGEN',NULL,_binary '','James Bond','Anonym',NULL,NULL),(4,'33.333, 44.444','Klein','VERSCHOLLEN',NULL,_binary '','James Bond','Anonym','Roger Moore','0122007007'),(5,'45.780, 80.000','Groß','GEMELDET',NULL,_binary '\0','Mister B','01744238987',NULL,NULL);
+INSERT INTO `ghost_net` VALUES (1,'10.100, 20.200','Klein','BERGUNG_BEVORSTEHEND',26,_binary '\0','Thomas Turnschuh','01746768920',NULL,NULL),(2,'60.600, 70.000','Groß','BERGUNG_BEVORSTEHEND',25,_binary '\0','Thomas Turnschuh','01746768920',NULL,NULL),(3,'22.222, 33.333','Groß','GEMELDET',NULL,_binary '\0','Rambo Zambo','01226739837',NULL,NULL),(4,'12.121, 23.242','Klein','GEBORGEN',27,_binary '','James Bond','Anonym',NULL,NULL),(5,'80.800, 90.900','Mittel','VERSCHOLLEN',NULL,_binary '','Mister T','Anonym','Roger Moore','01230070077');
 /*!40000 ALTER TABLE `ghost_net` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `person` (
   `person_type` enum('BERGEND','MELDEND') DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` VALUES (16,'Karin Kenner','MELDEND','0122127127'),(17,'Fred Feuerstein','BERGEND','0174456789'),(18,'Max Mustermann','BERGEND','Anonym'),(19,'Mister B','MELDEND','01744238987'),(20,'Devin Maurer','BERGEND','Anonym');
+INSERT INTO `person` VALUES (22,'Thomas Turnschuh','MELDEND','01746768920'),(23,'Thomas Turnschuh','MELDEND','01746768920'),(24,'Rambo Zambo','MELDEND','01226739837'),(25,'Max Mustermann','BERGEND','01231234567'),(26,'Fred Feuerstein','BERGEND','01229876543'),(27,'Mister B','BERGEND','01425675329');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -84,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-05-31 14:13:38
+-- Dump completed on 2026-06-03 12:32:37
