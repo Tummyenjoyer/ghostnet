@@ -91,12 +91,12 @@ public class GhostNetController {
     }
 
     @PostMapping("/bergung/person/add")
-    public String addBergendePerson(@RequestParam(required = false) String phone,
+    public String addBergendePerson(@RequestParam String phone,
                                     HttpSession session) {
         String name = (String) session.getAttribute("userName");
         Person person = new Person();
         person.setName(name);
-        person.setPhone(phone != null && !phone.isEmpty() ? phone : "Anonym");
+        person.setPhone(phone);
         person.setPersonType(Person.PersonType.BERGEND);
         ghostNetService.savePerson(person);
         return "redirect:/bergung";

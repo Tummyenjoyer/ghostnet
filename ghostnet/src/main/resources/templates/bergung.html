@@ -18,17 +18,13 @@
     <form action="/bergung/person/add" method="post">
         <p>Einloggen als: <strong th:text="${userName}"></strong></p>
 
-        <label>Telefon:</label>
+        <label>Telefon (Pflicht):</label>
         <input type="text" name="phone" id="phoneInput"
+               required
                placeholder="z.B. 0123456789"
                pattern="^[0-9\s\+\-]{6,20}$"
                title="Bitte gültige Telefonnummer eingeben (z.B. 0123456789)"/><br/>
         <small style="color: #888;">Nur Zahlen erlaubt (z.B. 0123456789)</small><br/><br/>
-
-        <label>
-            <input type="checkbox" id="noPhone" onclick="togglePhone()"/>
-            Telefonnummer nicht angeben
-        </label><br/><br/>
 
         <button type="submit">Als bergende Person registrieren</button>
     </form>
@@ -74,20 +70,6 @@
     </table>
 
 </div>
-
-<script>
-    function togglePhone() {
-        var checkbox = document.getElementById('noPhone');
-        var phoneInput = document.getElementById('phoneInput');
-        if (checkbox.checked) {
-            phoneInput.value = 'Anonym';
-            phoneInput.disabled = true;
-        } else {
-            phoneInput.value = '';
-            phoneInput.disabled = false;
-        }
-    }
-</script>
 
 </body>
 </html>
